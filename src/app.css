@@ -1,0 +1,379 @@
+@charset #utf-8;
+
+:root {
+  --white: #fff;
+  --black: #1c1c1c;
+}
+
+@define-mixin clearfix {
+  zoom: 1;
+
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+/*--------------------------------------------------------------------------------*/
+/* Foundation */
+/*--------------------------------------------------------------------------------*/
+
+html {
+  overflow: hidden;
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  /*position: relative;*/
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  font-family: "Avenir next", "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", serif;
+  font-size: 1.0rem;
+  font-feature-settings : "palt";
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-size-adjust: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  display: inline-block;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.st-Container {
+  @add-mixin clearfix;
+  /*position: absolute;*/
+  position: fixed;
+  overflow: hidden;
+  width: 6111px;
+  height: 100%;
+}
+
+/*--------------------------------------------------------------------------------*/
+/* Opening */
+/*--------------------------------------------------------------------------------*/
+
+.idx-Opening {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+
+  &_LoadStatus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate3d(-50%,-50%,0);
+
+    &-Logo {
+      margin: 0 0 64px;
+    }
+
+    &-Txt {
+      margin: 0 -8px 20px 0;
+    }
+
+    &-Bar {
+      position: relative;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      margin: 0 0 24px;
+      background: var(--white);
+      transform: translate3d(-50%,0,0);
+    }
+  }
+}
+
+/*--------------------------------------------------------------------------------*/
+/* Header */
+/*--------------------------------------------------------------------------------*/
+
+.st-Header {
+  position: relative;
+  float: left;
+  width: 435px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 48px 0 0 48px;
+
+  &_Concept {
+    position: absolute;
+    top: 50%;
+    transform: translate3d(0,-50%,0);
+    .caption {
+      line-height: 1.75;
+    }
+    .headline {
+      margin: 32px 0 56px -4px;
+      font-size: 1.8rem;
+      letter-spacing: 0.32em;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+    .item {
+      margin: 0 0 8px;
+    }
+  }
+
+  &_Footer {
+    position: absolute;
+    bottom: 32px;
+    .lists {
+      @mixin clearfix;
+      display: inline-block;
+      .item {
+        float: left;
+        margin: 0 16px 0 0;
+      }
+    }
+    .address {
+      margin: 16px 0 0;
+    }
+    .tel {
+      margin: 8px 0 0;
+    }
+    .copyright {
+      margin: 32px 0 0;
+      font-size: 1.0rem;
+    }
+  }
+}
+
+/*--------------------------------------------------------------------------------*/
+/* Content */
+/*--------------------------------------------------------------------------------*/
+
+.idx-Content {
+  /*@mixin clearfix;*/
+  /*overflow: hidden;*/
+  float: left;
+  height: 100%;
+  white-space: nowrap;
+
+  &_Item {
+    position: relative;
+    float: left;
+    margin: 0 200px 0 0;
+    .visual {
+      width: 396px;
+      height: 50vh;
+      margin: 25% 0 0;
+      img {margin-top: -12.5%;}
+    }
+    &:last-child {
+      .visual {
+        margin-top: 50%;
+      }
+    }
+  }
+
+  &_Odd, &_Even {
+    position: relative;
+    top: 8.33%;
+    float: left;
+    width: 788px;
+    height: 83.34vh;
+    margin: 0 200px 0 0;
+  }
+
+  &_Item-Mid, &_Item-Small, &_Item-Large {
+    position: absolute;
+  }
+
+  &_Item-Mid {
+    .visual {
+      width: 192px;
+      height: 50vh;
+    }
+  }
+
+  &_Item-Small {
+    left: 272px;
+    .visual {
+      width: 198px;
+      height: 25vh;
+    }
+  }
+
+  &_Item-Large {
+    right: 0;
+    .visual {
+      width: 396px;
+      height: 50vh;
+    }
+  }
+
+  .visual {
+    position: relative;
+    overflow: hidden;
+    img {
+      width: auto;
+      min-width: 125%;
+      min-height: 125%;
+    }
+  }
+
+  .curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    /*background: #f8f8f8;*/
+  }
+
+  &_Odd {
+    .idx-Content_Item-Mid {top: 25%;}
+    .idx-Content_Item-Small {bottom: 0;}
+    .idx-Content_Item-Large {}
+  }
+
+  &_Even {
+    .idx-Content_Item-Mid {bottom: 25%;}
+    .idx-Content_Item-Small {top: 0;}
+    .idx-Content_Item-Large {bottom: 0;}
+  }
+
+  .visual {
+    img {position: relative;}
+    &-20161211 img {left: -128px;}
+    &-20161106 img {top: -32px;}
+    &-20161102 img {top: -32px;left: -128px;}
+    &-20160919 img {top: -64px;}
+    &-20160722 img {top: -80px;}
+    &-20160531 img {top: -30px;}
+  }
+
+  .date {
+    position: absolute;
+    &-20161211 {top: -48px;left: -72px;}
+    &-20161126 {top: 48px;left: -88px;}
+    &-20161102 {right: -20px;bottom: -96px;}
+    &-20160919 {right: -120px;bottom: 32px;}
+    &-20160722 {top: -56px;left: -32px;}
+    &-20160704 {right: -122px;bottom: -24px;}
+  }
+
+  .body {
+    position: absolute;
+    line-height: 1.5;
+    &-20161211 {bottom: 0;right: 100%;padding: 0 32px 0 0;text-align: right;}
+    &-20161126 {top: 0;right: 100%;padding: 0 32px 0 0;text-align: right;}
+    &-20161102 {bottom: 0;right: 100%;padding: 0 32px 0 0;text-align: right;}
+    &-20161026 {top: 0;left: 100%;padding: 0 0 0 32px;}
+    &-20160919 {bottom: 0;left: 100%;padding: 0 0 0 32px;}
+    &-20160722 {top: 0;right: 100%;padding: 0 32px 0 0;text-align: right;}
+    &-20160704 {top: 100%;right: 0;padding: 32px 0 0;text-align: right;}
+    &-welcome {top: 60%;left: 100%;padding: 0 0 0 32px;}
+  }
+
+  .caption {
+    margin: 0 0 8px;
+  }
+}
+
+/*--------------------------------------------------------------------------------*/
+/* Map */
+/*--------------------------------------------------------------------------------*/
+
+.idx-Map {
+  position: absolute;
+  right: 0;
+  /*width: 161.8vh;*/
+  width: 1280px;
+  height: 100%;
+
+  div {
+    width: 100%;
+    height: 100%;
+  }
+
+  .gmnoprint {
+    display: none;
+  }
+
+  &_Link {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+    z-index: 1;
+    width: 160px;
+    height: 40px;
+    border: 1px solid var(--black);
+    line-height: 40px;
+    text-align: center;
+    a {
+      width: 100%;
+      height: 100%;
+      background: url(./img/icn-popup.png) no-repeat center right 8px;
+      background-size: 12px;
+      transition: all .1s;
+      &:hover {
+        background-color: var(--black);
+        color: var(--white);
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------------------------*/
+/* Custom scrollbar */
+/*--------------------------------------------------------------------------------*/
+
+.mCustomScrollbar {
+  overflow: hidden;
+  /*width: 1280px;*/
+  height: 100%;
+}
+
+.mCSB_container {
+  height: 100%;
+}
+
+.mCSB_scrollTools {
+  position: fixed !important;
+}
+
+.mCSB_scrollTools_horizontal {
+  height: 4px !important;
+}
+
+.mCSB_dragger_bar {
+  height: 100% !important;
+  margin: 0 auto !important;
+  border-radius: 0px !important;
+  background: var(--black) !important;
+}
+
+.mCSB_draggerRail {
+  background: none !important;
+}
